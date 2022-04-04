@@ -10,6 +10,7 @@ interface Props {
 
 const Basket = ({setIsBasketOpen}: Props) => {
   const handleBasketClose = () => setIsBasketOpen(false)
+  
   return (
     <div className={styles.cart}>
       <span onClick={handleBasketClose} className={styles.closecart}>

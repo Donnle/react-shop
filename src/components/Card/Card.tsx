@@ -2,12 +2,13 @@ import styles from "./Card.module.css";
 
 
 interface Props {
+  id: string,
   title: string,
   description: string,
-  price: number | string,
+  price: number,
 }
 
-const Card = ({title, description, price}: Props) => {
+const Card = ({id, title, description, price}: Props) => {
   return (
     <div className={styles.card}>
       <img src="https://picsum.photos/200" alt=""/>
