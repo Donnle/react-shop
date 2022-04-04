@@ -13,7 +13,7 @@ const Header = ({setIsBasketOpen}: Props) => {
   return (
     <header>
       <div className="container">
-        <a href="#" className={styles.logo}>CompanyLogo</a>
+        <span className={styles.logo}>CompanyLogo</span>
         <span onClick={handleBasketOpen} className={styles.bag}>
           <FontAwesomeIcon icon={faShoppingBag}/>
         </span>

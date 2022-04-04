@@ -39,6 +39,7 @@ header .container {
 }
 
 .button {
+  cursor: pointer;
   border-radius: 50px;
   display: block;
   background: #000;

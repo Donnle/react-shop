@@ -1,17 +1,25 @@
+import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes, faTrash} from "@fortawesome/free-solid-svg-icons";
 import BasketCard from "../BasketCard";
-import {IBasketItem} from "../App/App";
+import {IRootState} from "../../redux/store";
+import {basketValuesSelector} from "../../redux/selector";
+import {removeAllBasketItems} from "../../redux/action";
 
 import styles from "./Basket.module.css";
 
-
-interface Props {
-  setIsBasketOpen: (arg: boolean) => void,
-  itemsInBasket: Array<IBasketItem>,
+interface IItemInBasket {
+  id: string,
+  count: string,
 }
 
-const Basket = ({setIsBasketOpen, itemsInBasket}: Props) => {
+interface Props {
+  itemsInBasket: Array<IItemInBasket>,
+  setIsBasketOpen: (arg: boolean) => void,
+  removeAllBasketItem: () => void,
+}
+
+const Basket = ({itemsInBasket, setIsBasketOpen, removeAllBasketItem}: Props) => {
   const handleBasketClose = () => setIsBasketOpen(false)
 
   return (
@@ -31,12 +39,12 @@ const Basket = ({setIsBasketOpen, itemsInBasket}: Props) => {
           </tr>
           </thead>
           <tbody>
-          {itemsInBasket?.map((itemInBasket: IBasketItem) =>
-            <BasketCard {...itemInBasket}/>
+          {itemsInBasket?.map((itemInBasket: IItemInBasket) =>
+            <BasketCard key={itemInBasket.id} {...itemInBasket}/>
           )}
           </tbody>
         </table>
-        <span className='button'>
+        <span className='button' onClick={removeAllBasketItem}>
           Clean Cart <FontAwesomeIcon icon={faTrash}/>
         </span>
       </div>
@@ -44,4 +52,11 @@ const Basket = ({setIsBasketOpen, itemsInBasket}: Props) => {
   )
 }
 
-export default Basket
+const mapStateToProps = (state: IRootState) => ({
+  itemsInBasket: basketValuesSelector(state)
+})
+const mapDispatchToProps = (dispatch: any) => ({
+  removeAllBasketItem: () => dispatch(removeAllBasketItems())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Basket)

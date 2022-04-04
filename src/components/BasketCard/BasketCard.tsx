@@ -1,18 +1,44 @@
-import {IBasketItem} from "../App/App";
+import {connect} from "react-redux";
+import {basketItemSelector} from "../../redux/selector";
+import {removeBasketItem} from "../../redux/action";
+import {IRootState} from "../../redux/store";
 
 import styles from "./BasketCard.module.css";
 
-
-const BasketCard = ({id, title, imageLink, price, count}: IBasketItem) => {
-  return (
-    <tr>
-      <td><img src={imageLink} width="100" alt="card item"/></td>
-      <td>{title}</td>
-      <td>${price}</td>
-      <td>{count}</td>
-      <td><a href="#" className={styles.deletebtn} data-id="2">X</a></td>
-    </tr>
-  )
+interface IBasketItem {
+  id: string,
+  title: string,
+  description: string,
+  imageLink: string,
+  price: number,
 }
 
-export default BasketCard
+interface Props {
+  id: string,
+  count: string,
+  basketItem?: IBasketItem,
+  removeBasketItem?: () => void,
+}
+
+
+const BasketCard = ({count, basketItem, removeBasketItem}: Props) => (
+  <tr>
+    <td><img src={basketItem?.imageLink} width="100" alt="card item"/></td>
+    <td>{basketItem?.title}</td>
+    <td>${basketItem?.price}</td>
+    <td>{count}</td>
+    <td>
+      <button className={styles.deletebtn} onClick={removeBasketItem} data-id="2">X</button>
+    </td>
+  </tr>
+)
+
+
+const mapStateToProps = (state: IRootState, props: Props) => ({
+  basketItem: basketItemSelector(state, props),
+})
+const mapDispatchToProps = (dispatch: any, props: Props) => ({
+  removeBasketItem: () => dispatch(removeBasketItem({id: props.id}))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BasketCard)
