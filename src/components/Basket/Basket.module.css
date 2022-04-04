@@ -1,0 +1,39 @@
+.cart {
+  width: 30%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 0 5px #d4d4d4;
+  font-size: 16px;
+  transition: all .5s ease;
+}
+
+.activo {
+  right: 0;
+}
+
+.cart #miniCart {
+  padding: 1.3rem;
+}
+
+.cart #miniCart .button {
+  margin-top: 2rem;
+}
+
+.cart table {
+  border-collapse: collapse;
+}
+
+.cart th,
+.cart td {
+  padding: 10px;
+  text-align: left;
+}
+
+.closecart {
+  font-size: 2rem;
+  position: absolute;
+  right: 10px;
+}

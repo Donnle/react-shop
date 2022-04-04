@@ -1,0 +1,32 @@
+@media (min-width: 800px) {
+  .card {
+    width: 34%;
+  }
+}
+
+.card {
+  border: solid #ccc 1px;
+  border-radius: 20px;
+  overflow: hidden;
+  line-height: 1.5rem;
+  padding-bottom: 20px;
+  margin: 0 10px;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card .title {
+  font-weight: 900;
+  font-size: 26px;
+}
+
+.card .price {
+  font-size: 4rem;
+  font-weight: 100;
+  text-align: right;
+  line-height: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
