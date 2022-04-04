@@ -33,6 +33,7 @@
 }
 
 .closecart {
+  cursor: pointer;
   font-size: 2rem;
   position: absolute;
   right: 10px;

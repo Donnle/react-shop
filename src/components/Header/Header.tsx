@@ -5,17 +5,18 @@ import styles from "./Header.module.css";
 
 
 interface Props {
-
+  setIsBasketOpen: (arg: boolean) => void,
 }
 
-const Header = (props: Props) => {
+const Header = ({setIsBasketOpen}: Props) => {
+  const handleBasketOpen = () => setIsBasketOpen(true)
   return (
     <header>
       <div className="container">
         <a href="#" className={styles.logo}>CompanyLogo</a>
-        <a href="#" className={styles.bag}>
+        <span onClick={handleBasketOpen} className={styles.bag}>
           <FontAwesomeIcon icon={faShoppingBag}/>
-        </a>
+        </span>
       </div>
     </header>
   )

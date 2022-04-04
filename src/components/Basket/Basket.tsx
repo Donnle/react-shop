@@ -5,15 +5,16 @@ import styles from "./Basket.module.css";
 
 
 interface Props {
-  
+  setIsBasketOpen: (arg: boolean) => void
 }
 
-const Basket = (props: Props) => {
+const Basket = ({setIsBasketOpen}: Props) => {
+  const handleBasketClose = () => setIsBasketOpen(false)
   return (
     <div className={styles.cart}>
-      <a href="#" className={styles.closecart}>
+      <span onClick={handleBasketClose} className={styles.closecart}>
         <FontAwesomeIcon icon={faTimes}/>
-      </a>
+      </span>
       <div id="miniCart">
         <table id="listaCarrito" className={styles.uFullWidth}>
           <thead>
