@@ -5,13 +5,14 @@ interface Props {
   id: string,
   title: string,
   description: string,
+  imageLink: string,
   price: number,
 }
 
-const Card = ({id, title, description, price}: Props) => {
+const Card = ({id, title, description, imageLink, price}: Props) => {
   return (
     <div className={styles.card}>
-      <img src="https://picsum.photos/200" alt=""/>
+      <img src={imageLink} alt="Card item"/>
       <p className={styles.title}>{title}</p>
       <p className={styles.description}>{description}</p>
       <p className={styles.price}>${price}</p>
