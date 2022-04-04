@@ -35,7 +35,7 @@ const Cards = (props: Props) => {
   return (
     <div className={`${styles.cards} container`}>
       <h1>EXPLORE THE COLLECTION</h1>
-      {cards.map((card) =>
+      {cards?.map((card) =>
         <Card key={card.id} {...card}/>
       )}
     </div>

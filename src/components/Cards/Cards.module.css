@@ -2,6 +2,7 @@
   .cards {
     display: flex;
     justify-content: space-around;
-    padding: 3rem 0 0 0;
+    /* I KNOW, IT IS SO BAD */
+    padding: 3rem 0 0 0 !important;
   }
 }
